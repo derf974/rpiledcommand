@@ -1,4 +1,6 @@
 from flask import Flask,session
+from flask import render_template
+
 import configparser
 from composant import Led
 
@@ -13,8 +15,8 @@ TWINKLE_TEMPO = float(config['DEFAULT']['twinkle_tempo'])
 led  = Led(GPIO_PIN)
 
 @app.route('/')
-def hello():
-    return { 'message' : 'Hello' }
+def index():
+    return render_template('index.html')
 
 @app.route('/api/light/on')
 def light_on():
